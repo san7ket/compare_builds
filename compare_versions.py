@@ -1,15 +1,19 @@
-from BeautifulSoup import BeautifulSoup
-
 import os
-import sys
+import subprocess
 import urllib2
-import wget
+
+try:
+    from BeautifulSoup import BeautifulSoup
+    import wget
+except Exception as e:
+    subprocess.call(['pip', 'install', 'BeautifulSoup'])
+    subprocess.call(['pip', 'install', 'wget'])
 
 flag = flag1 = flag2 = 0
-signature = sys.argv[3]
+signature = os.getenv('SIGNATURE')
 
-os.mkdir('~/packages')
-DIR = '~/packages'
+os.mkdir('packages')
+DIR = 'packages'
 
 
 def get_packages_name(html):
@@ -23,11 +27,11 @@ def get_packages_name(html):
 
 
 def get_packages(package_name):
-    wget.download(sys.argv[1]+package_name, DIR)
+    wget.download(os.getenv('SATELLITE_SNAP_URL')+package_name, DIR)
 
-list1 = get_packages_name(urllib2.urlopen(sys.argv[1]).read())
+list1 = get_packages_name(urllib2.urlopen(os.getenv('SATELLITE_SNAP_URL')).read())
 list1.sort()
-list2 = get_packages_name(urllib2.urlopen(sys.argv[2]).read())
+list2 = get_packages_name(urllib2.urlopen(os.getenv('RCM_COMPOSE_URL')).read())
 list2.sort()
 print(
     "There are " + str(len(list1)) + " packages in build1 and "
@@ -53,9 +57,9 @@ for x in range(len(list1)):
     get_packages(list1[x])
 
 for x in range(len(list1)):
-    if 'OK' in os.popen('rpm -K ~/packages/' + list1[x]).read():
+    if 'OK' in os.popen('rpm -K packages/' + list1[x]).read():
         flag1 = flag1 + 1
-        if signature in os.popen('rpm -qpi ~/packages/' + list1[x] + '| grep "Signature" ').read():
+        if signature in os.popen('rpm -qpi packages/' + list1[x] + '| grep "Signature" ').read():
             flag2 = flag2 + 1
         else:
             print('signature not matched for ' + list1[x])
