@@ -8,8 +8,8 @@ import wget
 flag = flag1 = flag2 = 0
 signature = sys.argv[3]
 
-os.mkdir('~/packages')
-DIR = '~/packages'
+os.mkdir('packages')
+DIR = 'packages'
 
 
 def get_packages_name(html):
@@ -53,9 +53,9 @@ for x in range(len(list1)):
     get_packages(list1[x])
 
 for x in range(len(list1)):
-    if 'OK' in os.popen('rpm -K ~/packages/' + list1[x]).read():
+    if 'OK' in os.popen('rpm -K packages/' + list1[x]).read():
         flag1 = flag1 + 1
-        if signature in os.popen('rpm -qpi ~/packages/' + list1[x] + '| grep "Signature" ').read():
+        if signature in os.popen('rpm -qpi packages/' + list1[x] + '| grep "Signature" ').read():
             flag2 = flag2 + 1
         else:
             print('signature not matched for ' + list1[x])
