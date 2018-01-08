@@ -1,3 +1,5 @@
+#This is the script to compare packages in two different release engineering builds
+
 import os
 import subprocess
 import urllib2
@@ -8,6 +10,8 @@ try:
 except Exception as e:
     subprocess.call(['pip', 'install', 'BeautifulSoup'])
     subprocess.call(['pip', 'install', 'wget'])
+    from BeautifulSoup import BeautifulSoup
+    import wget
 
 flag = flag1 = flag2 = 0
 signature = os.getenv('SIGNATURE')
