@@ -33,6 +33,9 @@ def get_packages_name(html):
 def get_packages(package_name):
     wget.download(os.getenv('SATELLITE_SNAP_URL')+package_name, DIR)
 def fun():
+    flag = 0
+    flag1 = 0
+    flag2 = 0
     print "fun chalu"
     list1 = get_packages_name(urllib2.urlopen(os.getenv('SATELLITE_SNAP_URL')).read())
     list1.sort()
