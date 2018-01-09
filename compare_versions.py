@@ -83,6 +83,13 @@ def fun():
         print('Signature for ' + str(len(list1)-flag2) + ' packages not matched!!')
     
 def main():
+    
+    flag = flag1 = flag2 = 0
+    signature = os.getenv('SIGNATURE')
+
+    os.mkdir('packages')
+    DIR = 'packages'
+    print "chal raha hai"
     fun()
 
 if __name__== "__main__":
