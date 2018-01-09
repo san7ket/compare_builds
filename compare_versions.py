@@ -35,7 +35,8 @@ def get_packages(package_name):
     print "Before sleep"
     DIR1 = 'packages'
     #wget.download(os.getenv('SATELLITE_SNAP_URL')+package_name, DIR1)
-    subprocess.call(['wget', os.getenv('SATELLITE_SNAP_URL'+package_name, '-P ', DIR1])
+    subprocess.call(['wget','-P',DIR1,os.getenv('SATELLITE_SNAP_URL'+package_name])
+
 def fun():
     signature = os.getenv('SIGNATURE')
 
