@@ -82,5 +82,8 @@ def fun():
     else:
         print('Signature for ' + str(len(list1)-flag2) + ' packages not matched!!')
     
-def __main__:
+def main():
     fun()
+
+if __name__== "__main__":
+  main()
