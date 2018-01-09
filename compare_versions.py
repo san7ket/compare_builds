@@ -19,6 +19,7 @@ signature = os.getenv('SIGNATURE')
 #os.mkdir('packages')
 #DIR = 'packages'
 #print "chal raha hai"
+signature = os.getenv('SIGNATURE')
 
 def get_packages_name(html):
     soup = BeautifulSoup(html)
@@ -33,6 +34,10 @@ def get_packages_name(html):
 def get_packages(package_name):
     wget.download(os.getenv('SATELLITE_SNAP_URL')+package_name, DIR)
 def fun():
+    signature = os.getenv('SIGNATURE')
+
+    os.mkdir('packages')
+    DIR = 'packages'
     flag = 0
     flag1 = 0
     flag2 = 0
@@ -86,12 +91,7 @@ def fun():
         print('Signature for ' + str(len(list1)-flag2) + ' packages not matched!!')
     
 def main():
-    
-    flag = flag1 = flag2 = 0
     signature = os.getenv('SIGNATURE')
-
-    os.mkdir('packages')
-    DIR = 'packages'
     print "chal raha hai"
     fun()
 
