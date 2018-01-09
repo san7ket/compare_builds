@@ -16,9 +16,9 @@ except Exception as e:
 flag = flag1 = flag2 = 0
 signature = os.getenv('SIGNATURE')
 
-os.mkdir('packages')
-DIR = 'packages'
-print "chal raha hai"
+#os.mkdir('packages')
+#DIR = 'packages'
+#print "chal raha hai"
 
 def get_packages_name(html):
     soup = BeautifulSoup(html)
