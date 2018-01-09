@@ -32,12 +32,12 @@ def get_packages_name(html):
 
 
 def get_packages(package_name):
-    wget.download(os.getenv('SATELLITE_SNAP_URL')+package_name, DIR)
+    wget.download(os.getenv('SATELLITE_SNAP_URL')+package_name, DIR1)
 def fun():
     signature = os.getenv('SIGNATURE')
 
     os.mkdir('packages')
-    DIR = 'packages'
+    DIR1 = 'packages'
     flag = 0
     flag1 = 0
     flag2 = 0
