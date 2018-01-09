@@ -34,9 +34,8 @@ def get_packages_name(html):
 def get_packages(package_name):
     print "Before sleep"
     DIR1 = 'packages'
-    wget.download(os.getenv('SATELLITE_SNAP_URL')+package_name, DIR1)
-    import time
-    time.sleep(10)
+    #wget.download(os.getenv('SATELLITE_SNAP_URL')+package_name, DIR1)
+    subprocess.call(['wget', os.getenv('SATELLITE_SNAP_URL'+package_name, '-P ', DIR1])
 def fun():
     signature = os.getenv('SIGNATURE')
 
